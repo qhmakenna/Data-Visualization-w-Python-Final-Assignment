@@ -25,8 +25,8 @@ app = dash.Dash(__name__)
 #---------------------------------------------------------------------------------
 # Create the dropdown menu options
 dropdown_options = [
-    {'label': '...........', 'value': 'Yearly Statistics'},
-    {'label': 'Recession Period Statistics', 'value': '.........'}
+    {'label': 'Yearly Statistics', 'value': 'Yearly Statistics'},
+    {'label': 'Recession Period Statistics', 'value': 'Recession Period Statistics'}
 ]
 # List of years 
 year_list = [i for i in range(1980, 2024, 1)]
@@ -34,7 +34,7 @@ year_list = [i for i in range(1980, 2024, 1)]
 # Create the layout of the app
 app.layout = html.Div([
     #TASK 2.1 Add title to the dashboard
-    html.H1("Automobile Sales Statistics Dasboard"),#Include style for title
+    html.H1('Automobile Sales Statistics Dashboard',
         style={'textAlign' : 'center', 'color' : '#503D36', 'font-size' : 24} ),
     #TASK 2.2: Add two dropdown menus
     html.Div([
@@ -111,9 +111,7 @@ def update_output_container(selected_statistics, input_year):
         R_chart3 = dcc.Graph(figure=px.pie(exp_rec,
             values='Advertising_Expenditure',
             names='Vehicle_Type'))
-            title="Total Advertisement Expenditure for Each Vehicle Type during Recession Periods"
-            )
-        )
+            
 
 # Plot 4 bar chart for the effect of unemployment rate on vehicle type and sales
         #grouping data for plotting
@@ -123,7 +121,7 @@ def update_output_container(selected_statistics, input_year):
         x='Unemployment Rate',
         y='Total Sales',
         labels={'unemployment_rate': 'Unemployment Rate', 'Automobile_Sales': 'Average Automobile Sales'},
-        title='Effect of Unemployment Rate on Vehicle Type and Sales'))
+        title='Effect of Unemployment Rate on Vehicle Type and Sales')
 )
 
         return [
@@ -133,7 +131,7 @@ def update_output_container(selected_statistics, input_year):
 
 # Yearly Statistic Report Plots 
      # Check for Yearly Statistics.
-  elif (input_year and selected_statistics=='Yearly Statistics') :
+	elif (input_year and selected_statistics=='Yearly Statistics') :
           yearly_data = data[data['Year'] == input_year]
 
 # Plot 1 :Yearly Automobile sales using line chart for the whole period.
@@ -177,7 +175,7 @@ def update_output_container(selected_statistics, input_year):
                   html.Div(className='chart-item', children=[html.Div(children=Y_chart3),html.Div(children=Y_chart4)],style={'display': 'flex'})
                   ]
 
-      else:
+else:
           return None
 
   # Run the Dash app
