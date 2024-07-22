@@ -133,7 +133,7 @@ return [
 
 # Yearly Statistic Report Plots 
      # Check for Yearly Statistics.
-	elif (input_year and selected_statistics=='Yearly Statistics'):
+     elif (input_year and selected_statistics=='Yearly Statistics'):
           yearly_data = data[data['Year'] == input_year]
 
 # Plot 1 :Yearly Automobile sales using line chart for the whole period.
@@ -177,11 +177,11 @@ Y_chart4 = dcc.Graph(figure=px.pie(exp_data,
                   html.Div(className='chart-item', children=[html.Div(children=Y_chart3),html.Div(children=Y_chart4)],style={'display': 'flex'})
                   ]
 
-else:
+     else:
           return None
 
   # Run the Dash app
-if __name__ == '__main__':
-app.run_server(debug=True)
+     if __name__ == '__main__':
+	app.run_server(debug=True)
 
 
